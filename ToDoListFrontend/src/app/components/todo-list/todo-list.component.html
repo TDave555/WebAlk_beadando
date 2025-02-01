@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>Todo List</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>DeadLine</th>
+        <th>Owner</th>
+        <th>Completed</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.title }}</td>
+        <td *ngFor="let category of categories">
+          {{ category.title }}
+        </td>
+        <td>{{ todo.owner }}</td>
+        <td>{{ todo.deadLine }}</td>
+        <td>
+          <label for="check"></label>
+          <input id="check" type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo)">
+        <td>
+            <button class="btn btn-sm btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <h3>Add New Todo</h3>
+  <form (ngSubmit)="addTodo()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="newTodo.title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea id="description" name="description" [(ngModel)]="newTodo.description" class="form-control" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Category:</label>
+      <select id="category" name="category" [(ngModel)]="newTodo.categoryId" class="form-select">
+        <option [ngValue]="null">No Category</option>
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.title }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add Todo</button>
+  </form>
+</div>

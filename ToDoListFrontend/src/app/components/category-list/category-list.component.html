@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Categories</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th><Title></Title></th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>{{ category.id }}</td>
+        <td>{{ category.title }}</td>
+        <td>{{ category.owner }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="deleteCategory(category.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Add New Category</h3>
+  <form (ngSubmit)="addCategory()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Category Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="newCategory.title" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Add Category</button>
+  </form>
+</div>

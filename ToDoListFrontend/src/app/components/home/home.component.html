@@ -1,0 +1,16 @@
+<ng-container *ngIf="IsLoggedIn | async; else loginTemplate">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">To-Do App</a>
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/todos" routerLinkActive="active">Todos</a>
+        <a class="nav-link" routerLink="/categories" routerLinkActive="active">Categories</a>
+        <a class="nav-link" *ngIf="isAdmin | async" routerLink="/users" routerLinkActive="active">Users</a>
+      </div>
+    </div>
+  </nav>
+</ng-container>
+
+<ng-template #loginTemplate>
+  <app-login></app-login>
+</ng-template>
