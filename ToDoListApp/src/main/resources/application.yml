@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: ToDoListApp
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:todo_app.sqlite
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: update
