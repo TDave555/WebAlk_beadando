@@ -1,5 +1,4 @@
-# WebAlk_beadando
-To-Do alkalmazás
+# To-Do List webalkalmazás
 
 Spring Boot backend
 
